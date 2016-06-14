@@ -6,6 +6,7 @@
 package com.leapfrog.daopattern.studentDAO;
 
 import com.leapfrog.daopattern.Student;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,10 +16,11 @@ import java.util.List;
  * @author onesoft
  */
 public interface StudentDAO {
-    public List<Student> getAllStudents();
-    public Student getStudent(int rollNo);
-    public void updateStudent(Student student);
-    public void deleteStudent(Student student);
+   boolean insert (Student s);
+   boolean delete(int id);
+   Student getById(int id);
+   ArrayList<Student> getAll();
+   int count();
     
     
 }

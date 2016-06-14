@@ -7,43 +7,56 @@ package com.leapfrog.daopattern.studentDAOImpl;
 import com.leapfrog.daopattern.Student;
 import com.leapfrog.daopattern.studentDAO.StudentDAO;
 import java.util.ArrayList;
-import java.util.List;
+
+
 
 /**
  *
  * @author onesoft
  */
 public class StudentDAOImpl implements StudentDAO {
-      List<Student> students;    
-      
-      public StudentDAOImpl(){
-          students = new ArrayList<Student>();
-          Student student1 = new Student("Ram",0);
-          Student student2 = new Student("Krishna",1);
-          students.add(student1);
-          students.add(student2);
-      }
-      @Override
-   public void deleteStudent(Student student) {
-      students.remove(student.getRollNo());
-      System.out.println("Student: Roll No " + student.getRollNo() + ", deleted from database");
-   }
+      private ArrayList<Student> studentList = new ArrayList<>();
 
-   //retrive list of students from the database
-   @Override
-   public List<Student> getAllStudents() {
-      return students;
-   }
+    @Override
+    public boolean insert(Student s) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return studentList.add(s);
+    }
 
-   @Override
-   public Student getStudent(int rollNo) {
-      return students.get(rollNo);
-   }
+    @Override
+    public boolean delete(int id) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Student s = getById(id);
+        if(s != null){
+            studentList.remove(s);
+            return true;
+        }
+        return false;
+    }
 
-   @Override
-   public void updateStudent(Student student) {
-      students.get(student.getRollNo()).setName(student.getName());
-      System.out.println("Student: Roll No " + student.getRollNo() + ", updated in the database");
-   }
+    @Override
+    public Student getById(int id) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for(Student s: studentList){
+            if(s.getId() == id){
+                return s;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public ArrayList<Student> getAll() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return studentList;
+    }
+
+    @Override
+    public int count() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return studentList.size();
+    }
+
+  
       
 }

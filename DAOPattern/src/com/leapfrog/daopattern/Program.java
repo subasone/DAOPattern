@@ -5,8 +5,10 @@
  */
 package com.leapfrog.daopattern;
 
+import com.leapfrog.daopattern.controller.StudentController;
 import com.leapfrog.daopattern.studentDAO.StudentDAO;
 import com.leapfrog.daopattern.studentDAOImpl.StudentDAOImpl;
+import java.util.Scanner;
 
 /**
  *
@@ -18,22 +20,14 @@ public class Program {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
         StudentDAO studentDAO = new StudentDAOImpl();
+        StudentController studentController = new StudentController(input, studentDAO);
 
-      //print all students
-      for (Student student : studentDAO.getAllStudents()) {
-         System.out.println("Student: [RollNo : " + student.getRollNo() + ", Name : " + student.getName() + " ]");
-      }
-
-
-      //update student
-      Student student =studentDAO.getAllStudents().get(0);
-      student.setName("Hari");
-      studentDAO.updateStudent(student);
-
-      //get the student
-      studentDAO.getStudent(0);
-      System.out.println("Student: [RollNo : " + student.getRollNo() + ", Name : " + student.getName() + " ]");	
+        System.out.println("Welcome To Student Management System");
+        while (true) {
+             studentController.process();
+        }
     }
-    
+
 }

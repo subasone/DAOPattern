@@ -10,29 +10,67 @@ package com.leapfrog.daopattern;
  * @author onesoft
  */
 public class Student {
-    private String name;
-    private int rollNo;
-
-    public Student(String name, int rollNo) {
-        this.name = name;
-        this.rollNo = rollNo;
+    private int id;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private boolean status;
+    
+    public Student(){
+        
     }
 
-    public String getName() {
-        return name;
+    public Student(int id, String fisrtName, String lastName, String email, boolean status) {
+        this.id = id;
+        this.firstName = fisrtName;
+        this.lastName = lastName;
+        this.email = email;
+        this.status = status;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getId() {
+        return id;
     }
 
-    public int getRollNo() {
-        return rollNo;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setRollNo(int rollNo) {
-        this.rollNo = rollNo;
+    public String getFisrtName() {
+        return firstName;
     }
+
+    public void setFisrtName(String fisrtName) {
+        this.firstName = fisrtName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+     public String getFullName(){
+         return firstName + " " + lastName;
+     }
+   
     
     
 }
